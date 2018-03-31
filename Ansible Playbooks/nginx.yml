@@ -1,0 +1,13 @@
+ansible   webzm  -m  copy  -a 'src=/root/index.html  dest=/opt' -k
+---
+  - hosts: node1
+    become: yes
+    tasks:
+    - name: "Installing nginx"
+      apt:
+        name: nginx
+        state: present
+    - name: "Writing Code"
+      copy:
+        src: /root/index.html
+        dest: /var/www/html  

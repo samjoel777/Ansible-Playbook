@@ -1,0 +1,12 @@
+---
+- hosts: node1
+  become: yes
+  tasks:
+  - name: "Installing apache2"
+    apt:
+      name: apache2
+      state: present
+  - name: "Service Stopping"
+    service:
+      name: apache2
+      state: stopped
